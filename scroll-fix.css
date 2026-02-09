@@ -1,0 +1,5 @@
+/* Scroll Fix for Sticky Header */
+#flight-search-form,
+#contact-form-section {
+  scroll-margin-top: 120px;
+}
