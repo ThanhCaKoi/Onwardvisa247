@@ -42,7 +42,7 @@
               "description": "Verifiable flight reservation for visa applications and proof of onward travel.",
               "brand": {
                 "@type": "Brand",
-                "name": "BestOnwardTicket"
+                "name": "OnWardVisa247"
               },
               "offers": {
                 "@type": "Offer",
@@ -492,7 +492,7 @@
                 <p>Traveling on a one-way ticket? You might face issues at the airport check-in desk or immigration control. Many countries require <strong>proof of onward travel</strong>—a return flight ticket to prove you won't overstay your visa.</p>
                 <p>Don't risk being denied boarding or spending hundreds on a full-price flexible ticket you'll have to cancel later.</p>
                 <br>
-                <h3>BestOnwardTicket provides a solution for:</h3>
+                <h3>OnWardVisa247 provides a solution for:</h3>
                 <ul class="check-list">
                     <li><strong>Digital Nomads</strong> who don't know their next destination.</li>
                     <li><strong>Backpackers</strong> traveling overland or on open-ended trips.</li>
@@ -513,7 +513,7 @@
     <section id="comparison" class="comparison-section" style="padding: 80px 0; background: #fff;">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose BestOnwardTicket?</h2>
+                <h2>Why Choose OnWardVisa247?</h2>
                 <p>See how we stack up against other options.</p>
             </div>
             <div class="comparison-table-wrapper" style="overflow-x: auto;">
@@ -521,7 +521,7 @@
                     <thead>
                         <tr style="background: #f8f9fa;">
                             <th style="padding: 20px; text-align: left; color: #555;">Feature</th>
-                            <th style="padding: 20px; background: #e6f0ff; color: #0073e6; font-size: 1.1rem;">BestOnwardTicket</th>
+                            <th style="padding: 20px; background: #e6f0ff; color: #0073e6; font-size: 1.1rem;">OnWardVisa247</th>
                             <th style="padding: 20px; color: #555;">Buying Full Ticket</th>
                             <th style="padding: 20px; color: #555;">Photoshopped / Fake</th>
                         </tr>
@@ -610,6 +610,40 @@
                 <?php endwhile; wp_reset_postdata(); else : ?>
                     
                     <!-- Hardcoded Fallback if No Posts Exist (6 items) -->
+                    <?php 
+                    $fallbacks = array(
+                        array(
+                            'title' => 'Top 10 Visa-Free Countries for Digital Nomads in 2024',
+                            'date'  => 'March 15, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=2070&auto=format&fit=crop'
+                        ),
+                        array(
+                            'title' => 'How to Proof Onward Travel Without Buying a Full Ticket',
+                            'date'  => 'March 10, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1436491865332-7a615321cea7?q=80&w=2074&auto=format&fit=crop'
+                        ),
+                        array(
+                            'title' => 'The Ultimate Guide to Digital Nomad Visas in Europe',
+                            'date'  => 'March 05, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=2070&auto=format&fit=crop'
+                        ),
+                        array(
+                            'title' => '5 Common Mistakes When Applying for a Schengen Visa',
+                            'date'  => 'February 28, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=2070&auto=format&fit=crop'
+                        ),
+                         array(
+                            'title' => 'Why Airlines Ask for a Return Ticket (And What to Do)',
+                            'date'  => 'February 20, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop'
+                        ),
+                        array(
+                            'title' => 'Travel Light: Essential Gear for Long-Term Backpackers',
+                            'date'  => 'February 15, 2024',
+                            'img'   => 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop'
+                        ),
+                    );
+                    ?>
                     
                     <?php foreach($fallbacks as $f): ?>
                     <a href="<?php echo esc_url($blog_url); ?>" class="blog-card" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s, box-shadow 0.3s;">

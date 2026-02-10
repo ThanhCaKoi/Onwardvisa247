@@ -9,10 +9,10 @@
     <!-- SEO & Open Graph -->
     <meta name="description" content="Get a Verifiable Onward Ticket for Visa Applications & Airport Check-in. Valid flight reservations for just $14. Delivered instantly.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Best Onward Ticket - Rent A Proof Of Onward Travel">
+    <meta property="og:title" content="OnWardVisa247 - Rent A Proof Of Onward Travel">
     <meta property="og:description" content="Rent a verifiable flight reservation for visa applications and airport check-in. Only $14. Valid for 48 hours.">
     <meta property="og:url" content="<?php echo home_url(); ?>">
-    <meta property="og:site_name" content="BestOnwardTicket">
+    <meta property="og:site_name" content="OnWardVisa247">
     <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/hero.png">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -22,7 +22,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="<?php echo home_url(); ?>" class="logo">BestOnwardTicket</a>
+            <a href="<?php echo home_url(); ?>" class="logo">OnWardVisa247</a>
             <ul class="nav-links">
                 <li><a href="<?php echo home_url(); ?>">Home</a></li>
                 <li><a href="#flight-search-form">Book Your Trip</a></li>

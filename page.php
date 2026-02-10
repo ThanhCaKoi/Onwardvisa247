@@ -34,7 +34,7 @@ get_header(); ?>
 
                     // Pagination for multi-part pages
                     wp_link_pages( array(
-                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bestonwardticket' ),
+                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'onwardvisa247' ),
                         'after'  => '</div>',
                     ) );
                     ?>

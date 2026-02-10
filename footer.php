@@ -2,7 +2,7 @@
     <footer id="contact">
         <div class="container footer-container">
             <div class="footer-col">
-                <h4>BestOnwardTicket</h4>
+                <h4>OnWardVisa247</h4>
                 <p>The safest way to rent proof of onward travel.</p>
             </div>
             <div class="footer-col">
@@ -15,11 +15,11 @@
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
-                <a href="mailto:support@bestonwardticket.com">support@bestonwardticket.com</a>
+                <a href="mailto:support@onwardvisa247.com">support@onwardvisa247.com</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> BestOnwardTicket. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> OnWardVisa247. All rights reserved.</p>
         </div>
     </footer>
 
