@@ -18,11 +18,15 @@
             </header>
 
             <!-- Featured Image -->
-            <?php if ( has_post_thumbnail() ) : ?>
-                <div class="post-thumbnail" style="margin-bottom: 40px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 4px solid #fff;">
+            <!-- Featured Image -->
+            <div class="post-thumbnail" style="margin-bottom: 40px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 4px solid #fff;">
+                <?php if ( has_post_thumbnail() ) : ?>
                     <?php the_post_thumbnail('full', array('style' => 'width: 100%; height: auto; display: block; transition: transform 0.3s;')); ?>
-                </div>
-            <?php endif; ?>
+                <?php else: ?>
+                    <!-- Fallback Image if No Featured Image -->
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop" alt="Travel" style="width: 100%; height: auto; display: block;">
+                <?php endif; ?>
+            </div>
 
             <!-- Main Content -->
             <div class="entry-content" style="font-size: 1.15rem; line-height: 1.8; color: #334155;">

@@ -80,12 +80,61 @@
                         <h3><i class="fas fa-plane"></i> Find Onward Flights</h3>
                         <p>Search millions of routes for your visa application</p>
                     </div>
+                    <!-- Ticket Visual Widget -->
+                    <div class="ticket-visual">
+                        <div class="ticket-left">
+                            <div class="barcode-strip"></div>
+                            <div class="ticket-content">
+                                <div class="ticket-header-row">
+                                    <span>JOHN DOE</span>
+                                    <span>F3954</span>
+                                    <span>07 APR 2019</span>
+                                    <span>7A</span>
+                                </div>
+                                <div class="ticket-main-route">
+                                    <span class="city">NEW YORK</span>
+                                    <i class="fas fa-plane"></i>
+                                    <span class="city">HONG KONG</span>
+                                </div>
+                                <div class="ticket-info-row">
+                                    <div class="ticket-data-col">
+                                        <span class="ticket-label">GATE</span>
+                                        <span class="ticket-value">D 12</span>
+                                    </div>
+                                    <div class="ticket-data-col" style="text-align: right;">
+                                        <span class="ticket-label">BOARDING TIME</span>
+                                        <span class="ticket-value">07:30</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-footer-note">GATE CLOSES 40 MINUTES BEFORE DEPARTURE</div>
+                            </div>
+                        </div>
+                        <div class="ticket-right">
+                             <div class="barcode-top"></div>
+                             <div class="ticket-right-row">
+                                 <div class="ticket-label">NAME OF PASSENGER</div>
+                                 <div class="ticket-value" style="font-size: 1rem;">JOHN DOE</div>
+                             </div>
+                             <div class="ticket-right-row">
+                                 <div class="ticket-label">FLIGHT</div>
+                                 <div class="ticket-value">F3954</div>
+                             </div>
+                             <div class="ticket-right-row">
+                                 <div class="ticket-label">GATE</div>
+                                 <div class="ticket-value">D 12</div>
+                             </div>
+                             <div class="ticket-right-row" style="margin-top: auto;">
+                                 <div class="ticket-value" style="font-size: 0.9rem;">NEW YORK &rarr; HKG</div>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- End Ticket Visual Widget -->
                     <form class="booking-form" id="flight-search-form">
                         <div class="form-section-top" style="display: flex; gap: 20px; margin-bottom: 20px; align-items: flex-end;">
                             <!-- 1. Trip Type -->
                             <div class="trip-type-wrapper" style="flex: 1;">
                                 <label class="section-label" style="display:block; margin-bottom:10px; font-weight:700; color:#3b66a5;">Choose Your Route</label>
-                                <div class="radio-group-horizontal" style="display:flex; width:100%; height: 55px; border: 2px solid #3b66a5; border-radius: 12px; overflow: hidden; padding: 0;">
+                                <div class="radio-group-horizontal" style="display:flex; width:100%; height: 48px; border: 2px solid #3b66a5; border-radius: 12px; overflow: hidden; padding: 0;">
                                     <label class="radio-item" style="flex: 1; display: flex; align-items: center; justify-content: center; margin: 0; cursor: pointer; border-right: 1px solid #3b66a5; background: #fff; transition: background 0.2s;">
                                         <input type="radio" name="trip-type" value="oneway" checked style="margin-right: 8px;"> 
                                         <span>One-way</span>
@@ -100,7 +149,7 @@
                             <!-- 2. Passengers -->
                             <div class="passengers-wrapper" style="flex: 1;">
                                 <label class="section-label" style="display:block; margin-bottom:10px; font-weight:700; color:#3b66a5;">Passengers No</label>
-                                <div id="pax-trigger" class="pax-trigger-box" style="width: 100%; height: 55px; border: 2px solid #3b66a5; border-radius: 12px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; background: #fff; cursor: pointer;">
+                                <div id="pax-trigger" class="pax-trigger-box" style="width: 100%; height: 48px; border: 2px solid #3b66a5; border-radius: 12px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; background: #fff; cursor: pointer;">
                                     <span id="pax-display-text" style="font-weight: 500;">1 Adult, 0 Child, 0 Infant</span>
                                     <i class="fas fa-chevron-down" style="color: #3b66a5;"></i>
                                 </div>
@@ -129,7 +178,7 @@
                                 <label style="font-weight:700; color:#3b66a5; margin-bottom:8px; display:block;">From</label>
                                 <div class="input-with-icon" style="position:relative;">
                                     <i class="fas fa-plane-departure" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #3b66a5;"></i>
-                                    <input type="text" id="origin" placeholder="Search airport or city" style="width: 100%; height: 55px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500;">
+                                    <input type="text" id="origin" placeholder="Search airport or city" style="width: 100%; height: 48px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500;">
                                 </div>
                             </div>
                             <!-- To -->
@@ -137,7 +186,7 @@
                                 <label style="font-weight:700; color:#3b66a5; margin-bottom:8px; display:block;">To</label>
                                 <div class="input-with-icon" style="position:relative;">
                                     <i class="fas fa-plane-arrival" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #3b66a5;"></i>
-                                    <input type="text" id="destination" placeholder="Search airport or city" style="width: 100%; height: 55px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500;">
+                                    <input type="text" id="destination" placeholder="Search airport or city" style="width: 100%; height: 48px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500;">
                                 </div>
                             </div>
                         </div>
@@ -150,14 +199,14 @@
                                     <label style="font-weight:700; color:#3b66a5; margin-bottom:8px; display:block;">Departure Date</label>
                                     <div class="input-with-icon" style="position:relative;">
                                         <i class="far fa-calendar-alt" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #3b66a5;"></i>
-                                        <input type="date" id="departure-date" onclick="this.showPicker()" style="width: 100%; height: 55px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500; background: #fff;">
+                                        <input type="date" id="departure-date" onclick="this.showPicker()" style="width: 100%; height: 48px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500; background: #fff;">
                                     </div>
                                 </div>
                                 <div class="input-col" id="return-date-wrapper" style="display:none; flex: 1;">
                                     <label style="font-weight:700; color:#3b66a5; margin-bottom:8px; display:block;">Return Date</label>
                                     <div class="input-with-icon" style="position:relative;">
                                         <i class="far fa-calendar-alt" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #3b66a5;"></i>
-                                        <input type="date" id="return-date" onclick="this.showPicker()" style="width: 100%; height: 55px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500; background: #fff;">
+                                        <input type="date" id="return-date" onclick="this.showPicker()" style="width: 100%; height: 48px; padding-left: 45px; border: 2px solid #3b66a5; border-radius: 12px; font-weight: 500; background: #fff;">
                                     </div>
                                 </div>
                              </div>
@@ -517,92 +566,73 @@
     <!-- Latest Articles / Blog Preview -->
     <section id="latest-guides" class="blog-preview-section" style="padding: 80px 0; background: #f8fbff;">
         <div class="container">
-            <div class="section-header">
-                <h2>Travel Tips & Visa Guides</h2>
-                <p>Expert advice for Digital Nomads and World Travelers.</p>
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <span style="text-transform: uppercase; color: #888; letter-spacing: 2px; font-size: 0.9rem; font-weight: 600;">tips for travelers</span>
+                <h2 style="font-size: 2.5rem; margin-top: 10px;">Our traveling blog.</h2>
+                <p style="max-width: 700px; margin: 20px auto 0; color: #666; line-height: 1.6;">Explore the world through our travel blog. Here, you'll find guides to top destinations, tips for hassle-free travel, and insights on making the most of your journey. Travel smart, travel easy with Fast Onward Ticket!</p>
             </div>
             
             <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <?php 
                 // 1. Query for Blog Posts
                 $blog_query = new WP_Query(array(
-                    'posts_per_page' => 3,
-                    'post_status'    => 'publish'
+                    'post_type'      => 'post',
+                    'posts_per_page' => 6,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'date',
+                    'order'          => 'DESC'
                 ));
 
                 if ( $blog_query->have_posts() ) : 
                     while ( $blog_query->have_posts() ) : $blog_query->the_post(); 
-                    $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                     ?>
-                    <!-- Dynamic Post Card -->
-                    <div class="blog-card" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                        <div class="blog-img" style="height: 200px; background: #ddd; position: relative;">
-                            <?php if($thumb_url): ?>
-                                <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>" style="width:100%; height:100%; object-fit:cover;">
+                    <!-- Dynamic Post Card - Fully Clickable -->
+                    <a href="<?php the_permalink(); ?>" class="blog-card" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="blog-img" style="height: 200px; position: relative; overflow: hidden;">
+                            <?php if(has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium_large', array('style' => 'width:100%; height:100%; object-fit:cover;')); ?>
                             <?php else: ?>
-                                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#888; background:#eee;">
-                                    <i class="fas fa-newspaper fa-3x"></i>
-                                </div>
+                                 <!-- Fallback if no featured image is set -->
+                                 <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop" alt="Travel" style="width:100%; height:100%; object-fit:cover;">
+                                 <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center;">
+                                     <i class="fas fa-image fa-2x" style="color:white; opacity: 0.5;"></i>
+                                 </div>
                             <?php endif; ?>
                         </div>
                         <div class="blog-content" style="padding: 25px;">
-                            <?php 
-                                $cats = get_the_category(); 
-                                if(!empty($cats)) {
-                                    echo '<span class="blog-tag" style="background: #e6f0ff; color: #0073e6; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">' . esc_html($cats[0]->name) . '</span>';
-                                } else {
-                                    echo '<span class="blog-tag" style="background: #e6f0ff; color: #0073e6; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Travel Tips</span>';
-                                }
-                            ?>
-                            <h3 style="margin: 15px 0 10px; font-size: 1.25rem;"><a href="<?php the_permalink(); ?>" style="text-decoration:none; color:inherit;"><?php the_title(); ?></a></h3>
-                            <div style="color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom:15px;">
+                            <span class="blog-date" style="display:block; font-size:0.85rem; color:#888; margin-bottom:10px;"><?php echo get_the_date('F j, Y'); ?></span>
+                            <h3 class="blog-title" style="font-size: 1.1rem; margin-bottom: 12px; font-weight: 700; color: #1e293b;"><?php the_title(); ?></h3>
+                            <div class="blog-excerpt" style="font-size: 0.9rem; color: #666; line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
                                 <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
                             </div>
-                            <a href="<?php the_permalink(); ?>" style="display: inline-block; color: #0073e6; font-weight: 600;">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
-                    </div>
+                    </a>
                 <?php endwhile; wp_reset_postdata(); else : ?>
                     
-                    <!-- Hardcoded Fallback if No Posts Exist -->
-                    <!-- Article 1 -->
-                    <div class="blog-card" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                        <div class="blog-img" style="height: 200px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-                            <i class="fas fa-map-marked-alt fa-3x"></i>
+                    <!-- Hardcoded Fallback if No Posts Exist (6 items) -->
+                    
+                    <?php foreach($fallbacks as $f): ?>
+                    <a href="<?php echo esc_url($blog_url); ?>" class="blog-card" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="blog-img" style="height: 200px; position: relative; overflow: hidden;">
+                            <img src="<?php echo $f['img']; ?>" alt="Travel" style="width:100%; height:100%; object-fit:cover;">
+                            <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.1);"></div>
                         </div>
                         <div class="blog-content" style="padding: 25px;">
-                            <span class="blog-tag" style="background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Visa Tips</span>
-                            <h3 style="margin: 15px 0 10px; font-size: 1.25rem;">Top 5 Countries That Require Proof of Onward Travel</h3>
-                            <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Planning a trip to Thailand, Indonesia, or Peru? Don't get stuck at the airport. Learn which countries are strictest...</p>
-                            <a href="#" style="display: inline-block; margin-top: 15px; color: #0284c7; font-weight: 600;">Read More <i class="fas fa-arrow-right"></i></a>
+                            <span class="blog-date" style="color: #888; font-size: 0.85rem; display: block; margin-bottom: 10px;"><?php echo $f['date']; ?></span>
+                            <h3 class="blog-title" style="font-size: 1.1rem; margin-bottom: 12px; font-weight: 700; color: #1e293b;"><?php echo $f['title']; ?></h3>
+                            <div class="blog-excerpt" style="font-size: 0.9rem; color: #666; line-height: 1.5;">Explore the requirements and tips for your next trip to this destination. Stay prepared and travel with confidence.</div>
                         </div>
-                    </div>
-
-                    <!-- Article 2 -->
-                    <div class="blog-card" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                        <div class="blog-img" style="height: 200px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-                            <i class="fas fa-search-plus fa-3x"></i>
-                        </div>
-                        <div class="blog-content" style="padding: 25px;">
-                            <span class="blog-tag" style="background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">How-To</span>
-                            <h3 style="margin: 15px 0 10px; font-size: 1.25rem;">How to Verify Your Flight PNR Code</h3>
-                            <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Received your ticket? Here is a step-by-step guide on how to check your reservation status directly on the airline's website...</p>
-                            <a href="#" style="display: inline-block; margin-top: 15px; color: #0284c7; font-weight: 600;">Read More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Article 3 -->
-                    <div class="blog-card" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                        <div class="blog-img" style="height: 200px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-                            <i class="fas fa-laptop-house fa-3x"></i>
-                        </div>
-                        <div class="blog-content" style="padding: 25px;">
-                            <span class="blog-tag" style="background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">Digital Nomad</span>
-                            <h3 style="margin: 15px 0 10px; font-size: 1.25rem;">The Ultimate Digital Nomad Visa Checklist 2024</h3>
-                            <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Applying for a remote work visa? Ensure you have all your documents ready, including insurance, income proof, and flight reservations...</p>
-                            <a href="#" style="display: inline-block; margin-top: 15px; color: #0284c7; font-weight: 600;">Read More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    </a>
+                    <?php endforeach; ?>
                 <?php endif; ?>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <?php 
+                $blog_page_id = get_option('page_for_posts');
+                $blog_url = $blog_page_id ? get_permalink($blog_page_id) : home_url('/blog/');
+                ?>
+                <a href="<?php echo esc_url($blog_url); ?>" class="read-all-posts-btn">Read all Posts <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
