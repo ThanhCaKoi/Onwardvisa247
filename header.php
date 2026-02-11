@@ -25,7 +25,7 @@
             <a href="<?php echo home_url(); ?>" class="logo">OnWardVisa247</a>
             <ul class="nav-links">
                 <li><a href="<?php echo home_url(); ?>">Home</a></li>
-                <li><a href="#flight-search-form">Book Your Trip</a></li>
+                <li><a href="#search-step">Book Your Trip</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#why-use-us">Why use us</a></li>
                 <li><a href="#contact-form-section">Contact Us</a></li>

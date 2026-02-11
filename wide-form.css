@@ -7,17 +7,171 @@
   width: 80%; /* Requested 80% width */
 }
 
-/* 2. Form Card Container */
 .hero-form-card {
   width: 100% !important;
   max-width: 100% !important;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid white;
-  padding: 30px 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 20px 30px !important;
   border-radius: 20px !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+.ticket-visual {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  margin: 0 auto 20px;
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  ); /* Blue/Purple Gradient */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticket-left {
+  flex: 2;
+  padding: 20px;
+  position: relative;
+  border-right: 2px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  gap: 15px;
+}
+
+.ticket-left::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: #fff; /* Match form bg */
+  border-radius: 50%;
+}
+
+.ticket-left::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: #fff; /* Match form bg */
+  border-radius: 50%;
+}
+
+.barcode-strip {
+  width: 30px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.5) 2px,
+    rgba(255, 255, 255, 0.5) 4px
+  );
+  border-radius: 4px;
+}
+
+.ticket-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-header-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.ticket-main-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.ticket-main-route i {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  transform: rotate(45deg);
+}
+
+.ticket-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-data-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.ticket-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.ticket-footer-note {
+  font-size: 0.6rem;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 5px;
+}
+
+.ticket-right {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.barcode-top {
+  height: 30px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.8) 2px,
+    rgba(255, 255, 255, 0.8) 4px
+  );
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.ticket-right-row {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide Ticket on very small screens */
+@media (max-width: 600px) {
+  .ticket-visual {
+    display: none;
+  }
 }
 
 /* 3. ROW 1: RADIO & PASSENGERS */
@@ -25,8 +179,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
-  gap: 30px;
+  margin-bottom: 15px; /* Compact Spacing */
+  gap: 20px;
 }
 
 /* Left: Radio Group */
@@ -34,20 +188,20 @@
   display: flex;
   align-items: center;
   background: #fff;
-  padding: 6px 6px;
+  padding: 4px;
   border-radius: 999px;
   border: 2px solid #3b66a5;
   height: 40px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .radio-group-horizontal label {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 0 16px;
   cursor: pointer;
   border-radius: 999px;
   font-weight: 600;
@@ -56,6 +210,7 @@
   font-size: 0.95rem;
   margin: 0;
   white-space: nowrap;
+  height: 100%;
 }
 
 .radio-group-horizontal label:hover {
@@ -79,24 +234,20 @@
   box-shadow: inset 0 0 0 3px #fff; /* Dot effect */
 }
 
-.radio-group-horizontal input[type="radio"]:checked + span {
-  /* Text adjacent logic if needed, but we style label directly usually */
-}
-
 /* Right: Passengers */
 .passengers-wrapper {
   position: relative;
-  flex: 0 0 450px; /* Wider for full text */
+  flex: 0 0 400px; /* Adjusted width */
 }
 .passengers-display {
   width: 100%;
-  height: 48px;
+  height: 40px; /* Reduced Height */
   border: 2px solid #3b66a5;
   border-radius: 12px;
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   align-items: center;
-  font-size: 1rem;
+  font-size: 0.95rem; /* Slightly smaller text */
   font-weight: 500;
   color: #333;
   cursor: pointer;
@@ -114,7 +265,7 @@
   display: none;
   z-index: 100;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .pax-row {
   display: flex;
@@ -153,7 +304,6 @@ input[type="date"] {
   position: relative;
 }
 
-/* Hide default calendar icon in WebKit browsers because we use a custom icon */
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   top: 0;
@@ -166,13 +316,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-/* Focus state for premium feel */
 input[type="date"]:focus {
   outline: none;
-  background-color: #f0f7ff; /* Very light blue background on focus */
+  background-color: #f0f7ff;
 }
 
-/* Placeholder color styling (for browsers that support it on date inputs or if type is text initially) */
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-year-field {
@@ -187,9 +335,9 @@ input[type="date"]:focus {
 /* 4. ROW 2: INPUTS */
 .inputs-row-unified {
   display: flex;
-  gap: 20px;
+  gap: 15px; /* Compact gap */
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 15px; /* Compact margin */
 }
 
 .input-col {
@@ -200,8 +348,8 @@ input[type="date"]:focus {
 .inputs-row-unified label {
   font-weight: 700;
   color: #3b66a5;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
   display: block;
 }
 
@@ -211,11 +359,11 @@ input[type="date"]:focus {
 }
 .input-with-icon input {
   width: 100%;
-  height: 48px;
+  height: 44px; /* Reduced from 48px */
   border: 2px solid #3b66a5 !important;
   border-radius: 12px !important;
-  padding-left: 50px !important;
-  font-size: 1rem !important;
+  padding-left: 45px !important;
+  font-size: 0.95rem !important;
   color: #333;
   font-weight: 500;
   background: #fff !important;
@@ -223,10 +371,10 @@ input[type="date"]:focus {
 }
 .input-with-icon i {
   position: absolute;
-  left: 18px;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #3b66a5;
   pointer-events: none;
 }
@@ -236,28 +384,35 @@ input[type="date"]:focus {
   width: 400px;
   max-width: 100%;
   height: 60px;
-  background: #3b66a5 !important; /* BLUE User Requested */
+  background: linear-gradient(
+    135deg,
+    #ff7e5f 0%,
+    #feb47b 100%
+  ) !important; /* ORANGE Gradient */
   color: #fff !important;
   border: none !important;
-  border-radius: 12px;
+  border-radius: 20px; /* More rounded */
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: capitalize;
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  box-shadow: 0 10px 20px rgba(59, 102, 165, 0.3);
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(255, 126, 95, 0.4);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 #search-btn:hover {
   transform: translateY(-2px);
-  background: #2c4d80 !important;
+  box-shadow: 0 15px 30px rgba(255, 126, 95, 0.5);
+  background: linear-gradient(135deg, #feb47b 0%, #ff7e5f 100%) !important;
 }
 #search-btn:disabled {
-  background: #ccc !important;
+  background: #e0e0e0 !important;
   cursor: not-allowed !important;
   box-shadow: none !important;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 /* 4. Selection Summary Bar */

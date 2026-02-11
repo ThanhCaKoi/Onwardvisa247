@@ -11,7 +11,7 @@ function bot_scripts() {
     // Enqueue Styles
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap', array(), null);
     wp_enqueue_style('bot-style', get_stylesheet_uri(), array(), filemtime(get_template_directory() . '/style.css'));
-    wp_enqueue_style('bot-wide-form', get_template_directory_uri() . '/wide-form.css', array('bot-style'), '1.0');
+    wp_enqueue_style('bot-wide-form', get_template_directory_uri() . '/wide-form.css', array('bot-style'), filemtime(get_template_directory() . '/wide-form.css'));
 
     // Payment Scripts
     // REPLACE 'sb' WITH YOUR REAL PAYPAL CLIENT ID
@@ -19,7 +19,7 @@ function bot_scripts() {
     wp_enqueue_script('stripe-js', 'https://js.stripe.com/v3/', array(), null, true);
 
     // Enqueue Scripts
-    wp_enqueue_script('bot-script', get_template_directory_uri() . '/script.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('bot-script', get_template_directory_uri() . '/script.js', array('jquery'), filemtime(get_template_directory() . '/script.js'), true);
     
     // Pass PHP data to JS (for AJAX URL)
     wp_localize_script('bot-script', 'bot_vars', array(
