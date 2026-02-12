@@ -227,4 +227,109 @@ function bot_process_checkout() {
         'message'  => 'Order created successfully'
     ));
 }
-?>
+
+// --- AMADEUS API INTEGRATION ---
+function bot_get_amadeus_token() {
+    // CREDENTIALS PROVIDED BY USER
+    $api_key = 'wMq16wdLfE1qlNlGEitbJpWv6XEBQu0u';
+    $api_secret = 'tbr8vtAwoapAPZO9';
+    $token_url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
+
+    // Check transient for cached token to avoid hitting rate limits
+    $cached_token = get_transient('bot_amadeus_token');
+    if ($cached_token) {
+        return $cached_token;
+    }
+
+    $response = wp_remote_post($token_url, array(
+        'headers' => array(
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ),
+        'body' => array(
+            'grant_type'    => 'client_credentials',
+            'client_id'     => $api_key,
+            'client_secret' => $api_secret
+        )
+    ));
+
+    if (is_wp_error($response)) {
+        return $response;
+    }
+
+    $body = json_decode(wp_remote_retrieve_body($response), true);
+    if (isset($body['access_token'])) {
+        // Cache token for 25 minutes (expires in 1800s usually)
+        set_transient('bot_amadeus_token', $body['access_token'], 1500); 
+        return $body['access_token'];
+    }
+
+    $error_msg = isset($body['error_description']) ? $body['error_description'] : json_encode($body);
+    return new WP_Error('auth_failed', 'Amadeus Auth Failed: ' . $error_msg);
+}
+
+add_action('wp_ajax_bot_search_flights', 'bot_search_flights_handler');
+add_action('wp_ajax_nopriv_bot_search_flights', 'bot_search_flights_handler');
+
+function bot_search_flights_handler() {
+    $origin_raw = sanitize_text_field($_POST['origin']);
+    $dest_raw   = sanitize_text_field($_POST['destination']);
+    $date       = sanitize_text_field($_POST['date']);
+
+    // Extract Airport Codes (e.g. "Paris (CDG)" -> "CDG")
+    // If pattern matches (CODE), extract it. Else assume the user typed it or it's raw.
+    $o_code = $origin_raw;
+    if (preg_match('/\(([A-Z]{3})\)/', $origin_raw, $matches)) {
+        $o_code = $matches[1];
+    }
+
+    $d_code = $dest_raw;
+    if (preg_match('/\(([A-Z]{3})\)/', $dest_raw, $matches)) {
+        $d_code = $matches[1];
+    }
+    
+    // Safety check
+    if (empty($o_code) || empty($d_code) || empty($date)) {
+        wp_send_json_error(array('message' => 'Invalid search parameters.'));
+    }
+
+    $token = bot_get_amadeus_token();
+    if (is_wp_error($token)) {
+        wp_send_json_error(array('message' => 'Flight API Auth Error: ' . $token->get_error_message()));
+    }
+
+    // Build API URL
+    // https://test.api.amadeus.com/v2/shopping/flight-offers
+    $api_url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
+    $params = array(
+        'originLocationCode'      => $o_code,
+        'destinationLocationCode' => $d_code,
+        'departureDate'           => $date,
+        'adults'                  => 1,
+        'nonStop'                 => 'false',
+        'max'                     => 10 // Limit results
+    );
+
+    $url = add_query_arg($params, $api_url);
+
+    $response = wp_remote_get($url, array(
+        'headers' => array(
+            'Authorization' => 'Bearer ' . $token
+        ),
+        'timeout' => 20
+    ));
+
+    if (is_wp_error($response)) {
+        wp_send_json_error(array('message' => 'Flight search failed: ' . $response->get_error_message()));
+    }
+
+    $code = wp_remote_retrieve_response_code($response);
+    $body_json = wp_remote_retrieve_body($response);
+    $data = json_decode($body_json, true);
+
+    if ($code !== 200) {
+        $msg = isset($data['errors'][0]['detail']) ? $data['errors'][0]['detail'] : 'Unknown API Error';
+        wp_send_json_error(array('message' => 'API Error: ' . $msg));
+    }
+
+    wp_send_json_success($data);
+}

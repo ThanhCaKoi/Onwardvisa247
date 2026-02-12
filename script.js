@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const target = document.getElementById(stepName + "-step");
     if (target) target.style.display = "block";
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" }); // Removed to prevent jumping
   };
   window.showStep = showStep;
 
@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Select Flight (Consolidated)
   window.selectFlight = (flightNum, airline, from, to, date) => {
-    // Scroll to top first
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Scroll to top first - REMOVED
+    // window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Update Step 3 Headers
     const sFlight = document.getElementById("summary-flight-selection");
@@ -399,45 +399,47 @@ document.addEventListener("DOMContentLoaded", () => {
         resList.innerHTML =
           '<div style="text-align:center; padding:40px;"><i class="fas fa-spinner fa-spin fa-3x" style="color:#3b66a5"></i><p>Searching flights...</p></div>';
 
-      setTimeout(() => {
-        displayMockFlights(origin, dest, date);
-      }, 1200);
+      // Real API Call
+      if (typeof bot_vars !== "undefined") {
+        const formData = new FormData();
+        formData.append("action", "bot_search_flights");
+        formData.append("origin", origin);
+        formData.append("destination", dest);
+        formData.append("date", date);
+
+        fetch(bot_vars.ajax_url, {
+          method: "POST",
+          body: formData,
+        })
+          .then((r) => r.json())
+          .then((res) => {
+            console.log("Full Flight API Response:", res); // <-- Check Console
+            if (res.success) {
+              // Render results
+              displayAmadeusFlights(res.data, origin, dest, date);
+            } else {
+              const resList = document.getElementById("flight-results-list");
+              if (resList)
+                resList.innerHTML = `<div style="text-align:center; padding:40px; color:red;"><i class="fas fa-exclamation-triangle fa-2x"></i><p>No flights found.</p><p style="font-size:0.9rem; color:#666;">${res.data.message || "Please try different dates."}</p><button class="btn btn-secondary" onclick="showStep('search')" style="margin-top:15px;">Back to Search</button></div>`;
+            }
+          })
+          .catch((e) => {
+            console.error(e);
+            const resList = document.getElementById("flight-results-list");
+            if (resList)
+              resList.innerHTML = `<div style="text-align:center; padding:40px; color:red;"><p>Connection Error.</p></div>`;
+          });
+      } else {
+        // Fallback
+        console.error("bot_vars is not defined. API call cannot proceed.");
+        const resList = document.getElementById("flight-results-list");
+        if (resList)
+          resList.innerHTML = `<div style="text-align:center; padding:40px; color:red;"><p>Configuration Error.</p></div>`;
+      }
     });
   }
 
-  // Mock Results Generator
-  const displayMockFlights = (from, to, date) => {
-    const resList = document.getElementById("flight-results-list");
-    const airlines = [
-      "Qatar Airways",
-      "Emirates",
-      "Turkish Airlines",
-      "Singapore Airlines",
-      "Lufthansa",
-    ];
-    let html = "";
-    for (let i = 0; i < 3; i++) {
-      const air = airlines[Math.floor(Math.random() * airlines.length)];
-      const time =
-        Math.floor(Math.random() * 23) +
-        ":" +
-        (Math.random() < 0.5 ? "00" : "30");
-      const fNum =
-        air.substring(0, 2).toUpperCase() +
-        Math.floor(Math.random() * 900 + 100);
-      html += `
-        <div class="flight-item" onclick="selectFlight('${fNum}', '${air}', '${from}', '${to}', '${date}')">
-            <div class="flight-logo" style="width:50px; height:50px; background:#f0f4f8; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#3b66a5;">${air.substring(0, 1)}</div>
-            <div class="flight-info" style="flex:1; margin-left:15px;">
-                <h4 style="margin:0; color:#1a2b3c;">${air} (${fNum})</h4>
-                <div style="font-size:0.9rem; color:#666;">${from} <i class="fas fa-long-arrow-alt-right"></i> ${to}</div>
-                <div style="font-size:0.85rem; color:#3b66a5; margin-top:4px;"><i class="far fa-clock"></i> ${date} at ${time}</div>
-            </div>
-            <div class="flight-action"><button class="select-btn" style="background:#3b66a5; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:700;">Select</button></div>
-        </div>`;
-    }
-    if (resList) resList.innerHTML = html;
-  };
+  // Mock Results Generator (Removed - Using Real API)
 
   // Payment Logic
   // ... pills ...
@@ -627,6 +629,223 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // Amadeus Results Handler
+  window.toggleFlightDetails = function (id) {
+    const el = document.getElementById("details-" + id);
+    const btn = document.getElementById("btn-details-" + id);
+    if (el.style.display === "none") {
+      el.style.display = "block";
+      btn.innerText = "Hide Details";
+    } else {
+      el.style.display = "none";
+      btn.innerText = "View Details";
+    }
+  };
+
+  const displayAmadeusFlights = (apiResponse, fromRaw, toRaw, dateRaw) => {
+    const resList = document.getElementById("flight-results-list");
+    if (!apiResponse || !apiResponse.data || apiResponse.data.length === 0) {
+      resList.innerHTML = `<div style="text-align:center; padding:40px;"><p>No flights found for this route/date.</p><button class="btn btn-secondary" onclick="showStep('search')">Try Again</button></div>`;
+      return;
+    }
+
+    const flights = apiResponse.data;
+    const dictionaries = apiResponse.dictionaries || {};
+    const carriers = dictionaries.carriers || {};
+    const aircraftNames = dictionaries.aircraft || {};
+
+    let html = `
+    <style>
+      .flight-card-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .fc-logo-col {
+        margin-bottom: 10px;
+      }
+      .fc-route-col {
+        width: 100%;
+        max-width: 500px;
+      }
+      .fc-price-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      .fc-price-row {
+          display: flex; 
+          align-items: center; 
+          gap: 15px;
+      }
+      
+      /* Desktop / Wide View */
+      @media (min-width: 900px) {
+        .flight-card-main {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+        }
+        .fc-logo-col {
+          flex: 0 0 150px; 
+          margin-bottom: 0;
+          display: flex;
+          justify-content: flex-start;
+        }
+        .fc-logo-col img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px; 
+        }
+        .fc-route-col {
+          flex: 1; 
+          padding: 0 40px;
+        }
+        .fc-price-col {
+          flex: 0 0 200px; 
+          align-items: flex-end; 
+        }
+        .fc-price-row {
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+      }
+    </style>
+    `;
+
+    // Limit to first 10
+    flights.slice(0, 10).forEach((flight, index) => {
+      // Itineraries
+      const itinerary = flight.itineraries[0]; // Outbound
+      const segments = itinerary.segments;
+      const firstSegment = segments[0];
+      const lastSegment = segments[segments.length - 1];
+
+      // Airline
+      const carrierCode = firstSegment.carrierCode;
+      const airlineName = carriers[carrierCode] || carrierCode;
+      const flightNumber = carrierCode + firstSegment.number;
+      // Logo URL using a common CDN for airline logos
+      const logoUrl = `https://pics.avs.io/200/200/${carrierCode}.png`;
+
+      // Times
+      const departureDate = firstSegment.departure.at.split("T")[0];
+      const departureTime = firstSegment.departure.at
+        .split("T")[1]
+        .substring(0, 5); // HH:MM
+
+      const arrivalDate = lastSegment.arrival.at.split("T")[0];
+      const arrivalTime = lastSegment.arrival.at.split("T")[1].substring(0, 5); // HH:MM
+
+      // Route Codes
+      const originCode = firstSegment.departure.iataCode;
+      const destCode = lastSegment.arrival.iataCode;
+
+      // Duration
+      const duration = itinerary.duration
+        .replace("PT", "")
+        .replace("H", "h")
+        .replace("M", "m") // e.g. 8h20
+        .toLowerCase();
+
+      // Details
+      const aircraftCode = firstSegment.aircraft.code;
+      const aircraftName = aircraftNames[aircraftCode] || aircraftCode;
+      const cabinClass =
+        flight.travelerPricings[0].fareDetailsBySegment[0].class || "Y"; // Default to Y if missing
+
+      // Escape quotes for onclick
+      const safeAirline = airlineName.replace(/'/g, "\\'");
+
+      // Random fake high price
+      const fakePrice = (Math.random() * (2000 - 500) + 500).toFixed(2);
+
+      const uniqueId = index;
+
+      html += `
+        <div class="flight-card" style="background:#fff; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.06); padding:30px; margin-bottom:25px; border:1px solid #f0f0f0;">
+            
+            <!-- Main Content Flex Wrapper -->
+            <div class="flight-card-main">
+                
+                <!-- Logo -->
+                <div class="fc-logo-col">
+                    <img src="${logoUrl}" alt="${carrierCode}" style="height:70px; object-fit:contain;"> 
+                </div>
+
+                <!-- Middle: Route Info -->
+                <div class="fc-route-col">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.85rem; color:#666; margin-bottom:4px;">${departureDate}</div>
+                            <div style="font-size:1.4rem; font-weight:700; color:#1a2b3c;">${departureTime}</div>
+                            <div style="font-size:1.3rem; font-weight:800; color:#003087; margin-top:2px;">${originCode}</div>
+                        </div>
+
+                        <div style="color:#666; font-size:1.5rem; padding:0 20px;">&rarr;</div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.85rem; color:#666; margin-bottom:4px;">${arrivalDate}</div>
+                            <div style="font-size:1.4rem; font-weight:700; color:#1a2b3c;">${arrivalTime}</div>
+                            <div style="font-size:1.3rem; font-weight:800; color:#003087; margin-top:2px;">${destCode}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; justify-content:center; gap:20px; color:#666; font-size:0.95rem;">
+                         <span><i class="far fa-calendar-alt"></i> ${departureDate}</span>
+                         <span>-</span>
+                         <span><i class="far fa-clock"></i> ${duration}</span>
+                    </div>
+                </div>
+
+                <!-- Right: Price & Button -->
+                <div class="fc-price-col">
+                    <div class="fc-price-row">
+                        <div style="text-decoration:line-through; color:#999; font-size:0.9rem;">$${fakePrice}</div>
+                        <div style="font-size:1.6rem; font-weight:800; color:#444;">$14.00</div>
+                    </div>
+                    <button 
+                        onclick="selectFlight('${flightNumber}', '${safeAirline}', '${originCode}', '${destCode}', '${departureDate}')"
+                        style="background:#e45d46; color:white; border:none; padding:10px 40px; border-radius:8px; font-weight:700; font-size:1.1rem; cursor:pointer; box-shadow:0 4px 6px rgba(228, 93, 70, 0.2); white-space:nowrap;"
+                    >
+                        Select &rarr;
+                    </button>
+                </div>
+            
+            </div>
+
+            <!-- Details Toggle -->
+            <div style="text-align:center; margin-top:20px;">
+                <div id="btn-details-${uniqueId}" onclick="toggleFlightDetails(${uniqueId})" style="font-size:0.9rem; color:#3b66a5; cursor:pointer; display:inline-block; padding:5px;">View Details</div>
+            </div>
+
+            <!-- Hidden Details Section -->
+            <div id="details-${uniqueId}" style="display:none; border-top:1px solid #eee; padding-top:15px; margin-top:10px; text-align:center; animation: fadeIn 0.3s;">
+                <h5 style="font-weight:700; margin-bottom:10px; font-size:1rem; color:#333;">Departure Information</h5>
+                <div style="font-size:0.9rem; color:#555; line-height:1.6;">
+                    <div style="margin-bottom:5px;">
+                        <span style="font-weight:600;">Flight:</span> ${carrierCode}${firstSegment.number} 
+                        <span style="margin:0 8px;">|</span>
+                        <span style="font-weight:600;">Class:</span> ${cabinClass} 
+                        <span style="margin:0 8px;">|</span>
+                        <span style="font-weight:600;">Aircraft:</span> ${aircraftName}
+                    </div>
+                     <div>
+                        ${dictionaries.locations?.[originCode]?.cityCode || originCode} (${originCode}) &rarr; ${dictionaries.locations?.[destCode]?.cityCode || destCode} (${destCode})
+                    </div>
+                </div>
+            </div>
+
+        </div>`;
+    });
+
+    resList.innerHTML = html;
+  };
 
   // Init button state
   checkFormValidity();
