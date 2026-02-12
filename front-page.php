@@ -69,6 +69,55 @@
                     <li><i class="fas fa-passport"></i> Works for Digital Nomad Visas</li>
                     <li><i class="fas fa-file-pdf"></i> Instant Download</li>
                 </ul>
+
+                <!-- Ticket Visual Widget (Moved Up) -->
+                <div class="ticket-visual" style="margin-top: 30px;margin-top: 60px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+                    <div class="ticket-left">
+                        <div class="barcode-strip"></div>
+                        <div class="ticket-content">
+                            <div class="ticket-header-row">
+                                <span>JOHN DOE</span>
+                                <span>F3954</span>
+                                <span>07 APR 2019</span>
+                                <span>7A</span>
+                            </div>
+                            <div class="ticket-main-route">
+                                <span class="city">NEW YORK</span>
+                                <i class="fas fa-plane"></i>
+                                <span class="city">HONG KONG</span>
+                            </div>
+                            <div class="ticket-info-row">
+                                <div class="ticket-data-col">
+                                    <span class="ticket-label">GATE</span>
+                                    <span class="ticket-value">D 12</span>
+                                </div>
+                                <div class="ticket-data-col" style="text-align: right;">
+                                    <span class="ticket-label">BOARDING TIME</span>
+                                    <span class="ticket-value">07:30</span>
+                                </div>
+                            </div>
+                            <div class="ticket-footer-note">GATE CLOSES 40 MINUTES BEFORE DEPARTURE</div>
+                        </div>
+                    </div>
+                    <div class="ticket-right">
+                            <div class="barcode-top"></div>
+                            <div class="ticket-right-row">
+                                <div class="ticket-label">NAME OF PASSENGER</div>
+                                <div class="ticket-value" style="font-size: 1rem;">JOHN DOE</div>
+                            </div>
+                            <div class="ticket-right-row">
+                                <div class="ticket-label">FLIGHT</div>
+                                <div class="ticket-value">F3954</div>
+                            </div>
+                            <div class="ticket-right-row">
+                                <div class="ticket-label">GATE</div>
+                                <div class="ticket-value">D 12</div>
+                            </div>
+                            <div class="ticket-right-row" style="margin-top: auto;">
+                                <div class="ticket-value" style="font-size: 0.9rem;">NEW YORK &rarr; HKG</div>
+                            </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Multi-Step Booking Container -->
@@ -76,57 +125,11 @@
                 
                 <!-- STEP 1: SEARCH FORM -->
                 <div class="hero-form-card" id="search-step">
-                    <div class="form-header">
+                   
+
+                     <div class="form-header">
                         <h3><i class="fas fa-plane"></i> Find Onward Flights</h3>
                         <p>Search millions of routes for your visa application</p>
-                    </div>
-                    <!-- Ticket Visual Widget -->
-                    <div class="ticket-visual">
-                        <div class="ticket-left">
-                            <div class="barcode-strip"></div>
-                            <div class="ticket-content">
-                                <div class="ticket-header-row">
-                                    <span>JOHN DOE</span>
-                                    <span>F3954</span>
-                                    <span>07 APR 2019</span>
-                                    <span>7A</span>
-                                </div>
-                                <div class="ticket-main-route">
-                                    <span class="city">NEW YORK</span>
-                                    <i class="fas fa-plane"></i>
-                                    <span class="city">HONG KONG</span>
-                                </div>
-                                <div class="ticket-info-row">
-                                    <div class="ticket-data-col">
-                                        <span class="ticket-label">GATE</span>
-                                        <span class="ticket-value">D 12</span>
-                                    </div>
-                                    <div class="ticket-data-col" style="text-align: right;">
-                                        <span class="ticket-label">BOARDING TIME</span>
-                                        <span class="ticket-value">07:30</span>
-                                    </div>
-                                </div>
-                                <div class="ticket-footer-note">GATE CLOSES 40 MINUTES BEFORE DEPARTURE</div>
-                            </div>
-                        </div>
-                        <div class="ticket-right">
-                             <div class="barcode-top"></div>
-                             <div class="ticket-right-row">
-                                 <div class="ticket-label">NAME OF PASSENGER</div>
-                                 <div class="ticket-value" style="font-size: 1rem;">JOHN DOE</div>
-                             </div>
-                             <div class="ticket-right-row">
-                                 <div class="ticket-label">FLIGHT</div>
-                                 <div class="ticket-value">F3954</div>
-                             </div>
-                             <div class="ticket-right-row">
-                                 <div class="ticket-label">GATE</div>
-                                 <div class="ticket-value">D 12</div>
-                             </div>
-                             <div class="ticket-right-row" style="margin-top: auto;">
-                                 <div class="ticket-value" style="font-size: 0.9rem;">NEW YORK &rarr; HKG</div>
-                             </div>
-                        </div>
                     </div>
                     <!-- End Ticket Visual Widget -->
                     <form class="booking-form" id="flight-search-form">
@@ -485,32 +488,8 @@
     </section>
 
     <!-- Why Use Us (SEO Content) -->
-    <section id="why-use-us" class="seo-content">
-        <div class="container split-layout">
-            <div class="text-content">
-                <h2>Do You Really Need Proof of Onward Travel?</h2>
-                <p>Traveling on a one-way ticket? You might face issues at the airport check-in desk or immigration control. Many countries require <strong>proof of onward travel</strong>—a return flight ticket to prove you won't overstay your visa.</p>
-                <p>Don't risk being denied boarding or spending hundreds on a full-price flexible ticket you'll have to cancel later.</p>
-                <br>
-                <h3>OnWardVisa247 provides a solution for:</h3>
-                <ul class="check-list">
-                    <li><strong>Digital Nomads</strong> who don't know their next destination.</li>
-                    <li><strong>Backpackers</strong> traveling overland or on open-ended trips.</li>
-                    <li><strong>Visa Applicants</strong> who need a flight itinerary for their application.</li>
-                </ul>
-                <br>
-                <p>We rent you a real flight reservation valid for 48 hours or more. It comes with a verifiable PNR code that looks exactly like a standard flight confirmation.</p>
-            </div>
-            <div class="image-content">
-                <div class="img-wrapper">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/seo_travel_illustration.png" alt="Travel Documents Illustration">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section id="comparison" class="comparison-section" style="padding: 80px 0; background: #fff;">
+    <!-- Comparison Section (Why Choose Us) -->
+    <section id="why-use-us" class="comparison-section" style="padding: 80px 0; background: #fff;">
         <div class="container">
             <div class="section-header">
                 <h2>Why Choose OnWardVisa247?</h2>
@@ -559,6 +538,31 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Content (Proof of Travel) -->
+    <section id="proof-of-travel" class="seo-content">
+        <div class="container split-layout">
+            <div class="text-content">
+                <h2>Do You Really Need Proof of Onward Travel?</h2>
+                <p>Traveling on a one-way ticket? You might face issues at the airport check-in desk or immigration control. Many countries require <strong>proof of onward travel</strong>—a return flight ticket to prove you won't overstay your visa.</p>
+                <p>Don't risk being denied boarding or spending hundreds on a full-price flexible ticket you'll have to cancel later.</p>
+                <br>
+                <h3>OnWardVisa247 provides a solution for:</h3>
+                <ul class="check-list">
+                    <li><strong>Digital Nomads</strong> who don't know their next destination.</li>
+                    <li><strong>Backpackers</strong> traveling overland or on open-ended trips.</li>
+                    <li><strong>Visa Applicants</strong> who need a flight itinerary for their application.</li>
+                </ul>
+                <br>
+                <p>We rent you a real flight reservation valid for 48 hours or more. It comes with a verifiable PNR code that looks exactly like a standard flight confirmation.</p>
+            </div>
+            <div class="image-content">
+                <div class="img-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/seo_travel_illustration.png" alt="Travel Documents Illustration">
+                </div>
             </div>
         </div>
     </section>
@@ -677,6 +681,31 @@
             <div class="section-header">
                 <h2>Trusted by Travelers Worldwide</h2>
             </div>
+            <!-- Video Testimonials Section (New) -->
+            <div class="video-testimonials-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <video controls playsinline>
+                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <video controls playsinline>
+                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <video controls playsinline>
+                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
             <div class="testimonial-grid">
                 <div class="content-card testimonial">
                     <p>"Saved my trip! The airline wouldn't let me check in without a return flight. I bought this at the counter, got the PDF in 2 minutes. Highly recommend!"</p>
