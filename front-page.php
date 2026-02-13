@@ -71,7 +71,7 @@
                 </ul>
 
                 <!-- Ticket Visual Widget (Moved Up) -->
-                <div class="ticket-visual" style="margin-top: 30px;margin-top: 60px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+                <div class="ticket-visual" style="margin-bottom: 125px;margin-top: 125px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
                     <div class="ticket-left">
                         <div class="barcode-strip"></div>
                         <div class="ticket-content">
