@@ -686,8 +686,8 @@
                 <!-- Card 1: Sarah -->
                 <div class="combined-card">
                     <div class="card-video">
-                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-2.jpg">
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-2.mp4" type="video/mp4">
+                        <video controls playsinline preload="metadata">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-2.mp4#t=0.1" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -706,8 +706,8 @@
                 <!-- Card 2: Carlos -->
                 <div class="combined-card">
                     <div class="card-video">
-                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-1.jpg">
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-1.mp4" type="video/mp4">
+                        <video controls playsinline preload="metadata">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-1.mp4#t=0.1" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -726,8 +726,8 @@
                 <!-- Card 3: Hiroshi -->
                 <div class="combined-card">
                     <div class="card-video">
-                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-3.jpg">
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-3.mp4" type="video/mp4">
+                        <video controls playsinline preload="metadata">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-3.mp4#t=0.1" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
