@@ -681,59 +681,64 @@
             <div class="section-header">
                 <h2>Trusted by Travelers Worldwide</h2>
             </div>
-            <!-- Video Testimonials Section (New) -->
-            <div class="video-testimonials-grid">
-                <!-- Video 1 -->
-                <div class="video-card">
-                    <video controls playsinline>
-                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+            <!-- Combined Video Testimonials Section -->
+            <div class="combined-testimonials-grid">
+                <!-- Card 1: Sarah -->
+                <div class="combined-card">
+                    <div class="card-video">
+                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-2.jpg">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <p>"Saved my trip! The airline wouldn't let me check in without a return flight. I bought this at the counter, got the PDF in 2 minutes. Highly recommend!"</p>
+                        <div class="user">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_sarah.png" alt="Sarah J." class="avatar-img">
+                            <div class="info">
+                                <h5>Sarah J.</h5>
+                                <span>Digital Nomad</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Video 2 -->
-                <div class="video-card">
-                    <video controls playsinline>
-                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <!-- Video 3 -->
-                <div class="video-card">
-                    <video controls playsinline>
-                        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-3.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
 
-            <div class="testimonial-grid">
-                <div class="content-card testimonial">
-                    <p>"Saved my trip! The airline wouldn't let me check in without a return flight. I bought this at the counter, got the PDF in 2 minutes. Highly recommend!"</p>
-                    <div class="user">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_sarah.png" alt="Sarah J." class="avatar-img">
-                        <div class="info">
-                            <h5>Sarah J.</h5>
-                            <span>Digital Nomad</span>
+                <!-- Card 2: Carlos -->
+                <div class="combined-card">
+                    <div class="card-video">
+                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-1.jpg">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-content">
+                        <p>"Perfect for my Schengen visa application. The consulate needed a flight itinerary, but I didn't want to pay for a flight yet. This worked perfectly."</p>
+                        <div class="user">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_carlos.png" alt="Carlos M." class="avatar-img">
+                            <div class="info">
+                                <h5>Carlos M.</h5>
+                                <span>Traveler</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="content-card testimonial">
-                    <p>"Perfect for my Schengen visa application. The consulate needed a flight itinerary, but I didn't want to pay for a flight yet. This worked perfectly."</p>
-                    <div class="user">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_carlos.png" alt="Carlos M." class="avatar-img">
-                        <div class="info">
-                            <h5>Carlos M.</h5>
-                            <span>Traveler</span>
-                        </div>
+
+                <!-- Card 3: Hiroshi -->
+                <div class="combined-card">
+                    <div class="card-video">
+                        <video controls playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/images/poster-3.jpg">
+                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/testimonial-3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                </div>
-                <div class="content-card testimonial">
-                    <p>"Legit service. I entered the PNR on the airline's website and it was there. Valid for well over 48 hours which gave me plenty of time."</p>
-                    <div class="user">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_hiroshi.png" alt="Hiroshi T." class="avatar-img">
-                        <div class="info">
-                            <h5>Hiroshi T.</h5>
-                            <span>Backpacker</span>
+                    <div class="card-content">
+                        <p>"Legit service. I entered the PNR on the airline's website and it was there. Valid for well over 48 hours which gave me plenty of time."</p>
+                        <div class="user">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar_hiroshi.png" alt="Hiroshi T." class="avatar-img">
+                            <div class="info">
+                                <h5>Hiroshi T.</h5>
+                                <span>Backpacker</span>
+                            </div>
                         </div>
                     </div>
                 </div>

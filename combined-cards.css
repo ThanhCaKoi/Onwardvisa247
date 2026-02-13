@@ -1,0 +1,91 @@
+/* Combined Testimonial Card Styles (New) */
+.combined-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+.combined-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.combined-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-video {
+  /* 4:5 Aspect Ratio (Squared Vertical) to keep video smaller than full 9:16 */
+  width: 100%;
+  padding-bottom: 125%;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.card-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 25px;
+  background: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic; /* Quote style */
+}
+
+.card-content .user {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto; /* Push to bottom */
+}
+
+.card-content .avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-content .info h5 {
+  font-size: 1.05rem;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.card-content .info span {
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 500;
+}
